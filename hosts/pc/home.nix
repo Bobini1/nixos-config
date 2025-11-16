@@ -109,6 +109,10 @@
         dimDisplay.enable = false;
       };
     };
+    kscreenlocker = {
+      autoLock = false;
+      timeout = 0;
+    };
   };
 
   dconf.settings = {
