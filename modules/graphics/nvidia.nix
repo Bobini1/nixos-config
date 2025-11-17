@@ -1,9 +1,21 @@
 { config, lib, ... }:
 {
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware = {
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      open = true;
+    };
+    nvidia-container-toolkit.enable = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      libva-vdpau-driver
+    ];
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 
   boot.extraModprobeConfig =

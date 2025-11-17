@@ -19,7 +19,7 @@
     ../../modules/services/udev.nix
     ../../modules/services/ssh.nix
     ../../modules/overlays
-    ../../modules/nvidia/nvidia.nix
+    ../../modules/graphics/amd.nix
     ../../modules/desktops/theming/stylix.nix
     ../../modules/desktops/plasma.nix
   ];
@@ -51,19 +51,14 @@
     cpuFreqGovernor = "ondemand";
   };
 
-  # Enable nvidia driver
   hardware = {
     cpu.amd.updateMicrocode = true;
-    nvidia.open = true;
+
     graphics = {
-      enable = true;
-      enable32Bit = true;
       extraPackages = with pkgs; [
-        nvidia-vaapi-driver
         libva-vdpau-driver
       ];
     };
-    nvidia-container-toolkit.enable = true;
     bluetooth = {
       enable = true;
     };
@@ -81,7 +76,7 @@
   programs.gamescope = {
     enable = false;
     env = {
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      __GLX_VENDOR_LIBRARY_NAME = "amdgpu";
     };
   };
 
@@ -91,7 +86,7 @@
 
   services.xserver = {
     enable = false;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
     # Set the refresh rate for the monitor
     config = ''
       Section "Monitor"
