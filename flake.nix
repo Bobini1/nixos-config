@@ -11,6 +11,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     stylix.url = "github:danth/stylix";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    rhythmgame.url = "github:bobini1/rhythmgame";
 #   wsl = {
 #     url = "github:nix-community/NixOS-WSL";
 #     inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +49,7 @@
     nix-colors,
     emacs-overlay,
     nixpkgs-f2k,
+    rhythmgame,
     plasma-manager,
     ... }@inputs: let
     system = "x86_64-linux";
@@ -86,6 +88,7 @@
                     nix-colors
                     inputs
                     e-mail
+                    rhythmgame
                     ;
                 };
               };

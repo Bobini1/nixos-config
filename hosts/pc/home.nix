@@ -5,6 +5,7 @@
   nix-colors,
   inputs,
   plasma-manager,
+  rhythmgame,
   ...
 }:
 {
@@ -88,6 +89,7 @@
     (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.clion ["github-copilot"])
     gimp
     mattermost-desktop
+    rhythmgame.packages.${stdenv.hostPlatform.system}.default
   ];
 
   programs.plasma = {
