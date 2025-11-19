@@ -63,6 +63,7 @@
     gimp
     mattermost-desktop
     rhythmgame.packages.${stdenv.hostPlatform.system}.default
+    kdePackages.kirigami-gallery
   ];
 
   programs.plasma = {

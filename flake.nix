@@ -39,6 +39,10 @@
 
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -51,6 +55,7 @@
     nixpkgs-f2k,
     rhythmgame,
     plasma-manager,
+    nix4vscode,
     ... }@inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -60,6 +65,7 @@
       nixpkgs.overlays = [
         emacs-overlay.overlay
         nixpkgs-f2k.overlays.window-managers
+        nix4vscode.overlays.default
       ];
     };
   in
