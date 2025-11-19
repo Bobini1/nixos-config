@@ -15,7 +15,6 @@
     ./eza.nix
     ./fastfetch.nix
     ./nushell.nix
-    ./xresources.nix
     ./zoxide.nix
   ];
 

@@ -2,13 +2,9 @@
 
 {
   stylix = {
-    enable = true;
-    autoEnable = false;
+    enable = true;autoEnable = true;
+    #
     image = ../wallpapers/milk1.jpg;
-    targets = {
-      gtk.enable = false;
-      qt.enable = false;
-    };
     #base16Scheme = ./colorschemes/matcha-dark.yaml;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 #     cursor = {
@@ -18,7 +14,7 @@
 #     };
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrains Mono Nerd Font";
       };
 #       serif = config.stylix.fonts.monospace;

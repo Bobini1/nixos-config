@@ -25,34 +25,7 @@
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
   stylix = {
     enable = true;
-    autoEnable = false;
-    image = ../../modules/desktops/wallpapers/milk1.jpg;
-    targets = {
-      vesktop.enable = true;
-      gtk.enable = true;
-    };
-    #base16Scheme = ./colorschemes/matcha-dark.yaml;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-#     cursor = {
-#       size = 16;
-#       package = pkgs.phinger-cursors;
-#       name = "phinger-cursors-light";
-#     };
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrains Mono Nerd Font";
-      };
-#       serif = config.stylix.fonts.monospace;
-#       sansSerif = config.stylix.fonts.monospace;
-#       emoji = config.stylix.fonts.monospace;
-#       sizes = {
-#         desktop = 12;
-#         terminal = 12;
-#         popups = 12;
-#         applications = 12;
-#       };
-    };
+    targets.firefox.profileNames = [ "default" ];
   };
   #colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
