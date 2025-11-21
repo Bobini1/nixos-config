@@ -7,8 +7,7 @@
   plasma-manager,
   rhythmgame,
   ...
-}:
-{
+}: {
   imports = [
     nix-colors.homeManagerModules.default
     #../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
@@ -25,7 +24,7 @@
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
   stylix = {
     enable = true;
-    targets.firefox.profileNames = [ "default" ];
+    targets.firefox.profileNames = ["default"];
   };
   #colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
@@ -93,8 +92,8 @@
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 
@@ -167,5 +166,23 @@
       downloader = "aria2c";
       downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
     };
+  };
+
+  home.activation.makeVSCodeConfigWritable = let
+    configDirName =
+      {
+        "vscode" = "Code";
+        "vscode-insiders" = "Code - Insiders";
+        "vscodium" = "VSCodium";
+      }.${
+        config.programs.vscode.package.pname
+      };
+    configPath = "${config.xdg.configHome}/${configDirName}/User/settings.json";
+  in {
+    after = ["writeBoundary"];
+    before = [];
+    data = ''
+      install -m 0640 "$(readlink ${configPath})" ${configPath}
+    '';
   };
 }
