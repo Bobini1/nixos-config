@@ -5,6 +5,7 @@
   pkgs,
   username,
   inputs,
+  lib,
   ...
 }:
 {
@@ -43,6 +44,8 @@
 
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkOverride 500 0;
 
   # Power management
   powerManagement = {
