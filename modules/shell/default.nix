@@ -14,7 +14,7 @@
     ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
-    ./nushell.nix
+    ./shell.nix
     ./zoxide.nix
   ];
 
