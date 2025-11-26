@@ -168,22 +168,4 @@
       downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
     };
   };
-
-  home.activation.makeVSCodeConfigWritable = let
-    configDirName =
-      {
-        "vscode" = "Code";
-        "vscode-insiders" = "Code - Insiders";
-        "vscodium" = "VSCodium";
-      }.${
-        config.programs.vscode.package.pname
-      };
-    configPath = "${config.xdg.configHome}/${configDirName}/User/settings.json";
-  in {
-    after = ["writeBoundary"];
-    before = [];
-    data = ''
-      install -m 0640 "$(readlink ${configPath})" ${configPath}
-    '';
-  };
 }
