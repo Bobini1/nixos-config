@@ -64,6 +64,7 @@
     rhythmgame.packages.${stdenv.hostPlatform.system}.default
     kdePackages.kirigami-gallery
   ];
+  stylix.targets.kitty.variant256Colors = true;
 
   programs.plasma = {
     enable = true;
