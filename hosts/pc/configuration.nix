@@ -165,6 +165,7 @@
   # services.xserver.libinput.enable = true;
 
   services.gvfs.enable = true;
+  programs.adb.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
@@ -177,6 +178,7 @@
       "networkmanager"
       "libvirtd"
       "docker"
+      "adbusers"
     ];
     packages = with pkgs; [ libz ];
   };
