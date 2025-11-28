@@ -28,6 +28,8 @@
   };
   #colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
+  age.identityPaths = [ "~/.ssh/id_ed25519" ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "${username}";

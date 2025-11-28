@@ -43,6 +43,8 @@
       url = "github:nix-community/nix4vscode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -56,6 +58,7 @@
     rhythmgame,
     plasma-manager,
     nix4vscode,
+    agenix,
     ... }@inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -74,20 +77,22 @@
       pc = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs username;
+            inherit inputs username system;
           };
           modules = [
             ./hosts/pc
             default-overlays
             home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix # TODO Configure stylix
+            inputs.stylix.nixosModules.stylix
+            agenix.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "bak";
                 sharedModules = [ plasma-manager.homeModules.plasma-manager
-                                  inputs.nix-doom-emacs-unstraightened.homeModule ];
+                                  inputs.nix-doom-emacs-unstraightened.homeModule
+                                  agenix.homeManagerModules.default ];
                 extraSpecialArgs = {
                   inherit
                     username
@@ -122,12 +127,5 @@
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.nixfmt-rfc-style;
       };
-      devShells.${system}.java17 = pkgs.mkShell {
-        NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
-        packages = with pkgs; [
-          openjdk17
-        ];
-        name = "java17";
-      };
   };
-}	
+}

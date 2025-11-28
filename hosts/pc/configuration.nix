@@ -6,6 +6,7 @@
   username,
   inputs,
   lib,
+  system,
   ...
 }:
 {
@@ -19,6 +20,7 @@
     ../../modules/services/fwupd.nix
     ../../modules/services/udev.nix
     ../../modules/services/ssh.nix
+    ../../modules/services/slskd.nix
     ../../modules/overlays
     ../../modules/graphics/amd.nix
     ../../modules/desktops/theming/stylix.nix
@@ -202,6 +204,7 @@
     kdePackages.polkit-kde-agent-1
     kdePackages.ksystemlog
     gparted
+    inputs.agenix.packages."${system}".default
   ];
 
   programs.java = { enable = true; package = pkgs.openjdk17; };

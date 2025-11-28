@@ -20,6 +20,7 @@
         ++ pkgs.nix4vscode.forVscode [
           "theqtcompany.qt-core"
           "theqtcompany.qt-qml"
+          "flix.flix"
         ];
       userSettings = {
         github.copilot.nextEditSuggestions.enabled = true;
