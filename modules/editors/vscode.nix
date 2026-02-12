@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhs; # For rust-analyzer etc
+    package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions;
         [
@@ -23,8 +23,8 @@
           "flix.flix"
         ];
       userSettings = {
-        github.copilot.nextEditSuggestions.enabled = true;
-        qt-core.additionalQtPaths = [
+        "github.copilot.nextEditSuggestions.enabled" = true;
+        "qt-core.additionalQtPaths" = [
           {
             name = "Qt-6.10.0-linux-g++_from_PATH";
             path = "${pkgs.kdePackages.qtbase}/bin/qtpaths";
