@@ -1,10 +1,13 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     protonup-ng
     steam-run
     protontricks
-    wineWowPackages.stable
+    wineWow64Packages.stable
     winetricks
     bottles
     prismlauncher

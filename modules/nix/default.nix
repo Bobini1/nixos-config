@@ -1,8 +1,11 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     nh
-    nixfmt-rfc-style
+    nixfmt
     nixd
     nix-inspect
     nix-output-monitor
@@ -10,7 +13,7 @@
 
   nix = {
     package = pkgs.lix;
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -19,7 +22,7 @@
 
     optimise = {
       automatic = true;
-      dates = [ "weekly" ];
+      dates = ["weekly"];
     };
 
     sshServe = {
