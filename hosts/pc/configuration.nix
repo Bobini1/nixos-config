@@ -167,7 +167,6 @@
   # services.xserver.libinput.enable = true;
 
   services.gvfs.enable = true;
-  programs.adb.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
@@ -204,6 +203,7 @@
     kdePackages.polkit-kde-agent-1
     kdePackages.ksystemlog
     gparted
+    android-tools
     inputs.agenix.packages."${system}".default
   ];
 
