@@ -8,8 +8,7 @@
   lib,
   system,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -41,7 +40,7 @@
       };
     };
     # Add support for Windows partitions
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
   };
 
   # Enabling latest linux kernel
@@ -91,7 +90,7 @@
 
   services.xserver = {
     enable = false;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = ["amdgpu"];
     # Set the refresh rate for the monitor
     config = ''
       Section "Monitor"
@@ -107,7 +106,7 @@
     mouse = {
       accelProfile = "flat";
     };
-    touchpad = { };
+    touchpad = {};
   };
 
   networking = {
@@ -181,7 +180,7 @@
       "docker"
       "adbusers"
     ];
-    packages = with pkgs; [ libz ];
+    packages = with pkgs; [libz];
   };
 
   # Auto-login
@@ -207,7 +206,10 @@
     inputs.agenix.packages."${system}".default
   ];
 
-  programs.java = { enable = true; package = pkgs.openjdk17; };
+  programs.java = {
+    enable = true;
+    package = pkgs.openjdk17;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
