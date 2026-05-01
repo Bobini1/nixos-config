@@ -38,6 +38,7 @@
       efi = {
         canTouchEfiVariables = true;
       };
+      timeout = 15;
     };
     # Add support for Windows partitions
     supportedFilesystems = ["ntfs"];
